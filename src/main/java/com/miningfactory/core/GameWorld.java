@@ -32,7 +32,7 @@ public class GameWorld {
         this.map = new Map(GRID_COLS, GRID_ROWS);
         this.player = new Player(3.0f * Map.TILE_SIZE, 12.5f * Map.TILE_SIZE);
         this.mine = new Mine();
-        this.moneyManager = new MoneyManager(0); // Начинаем с $0 (добыча -> продажа -> покупка)
+        this.moneyManager = new MoneyManager(0); 
         this.machineShop = new MachineShop(moneyManager);
         this.upgradeShop = new UpgradeShop(moneyManager);
     }
@@ -41,7 +41,7 @@ public class GameWorld {
         float speedMultiplier = player.getUpgrades().getWorkSpeedMultiplier();
         map.updateAll(dt * speedMultiplier, moneyManager);
 
-        // Продажа ресурсов из рюкзака при входе игрока в SELL ZONE
+        
         Tile playerTile = map.getTile(player.getGridX(), player.getGridY());
         if (playerTile != null && playerTile.getZoneType() == Tile.ZoneType.SELL) {
             int earned = player.sellAllResources(moneyManager);
