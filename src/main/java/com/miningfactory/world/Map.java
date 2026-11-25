@@ -19,14 +19,14 @@ public class Map {
     private void initZones() {
         for (int x = 0; x < cols; x++) {
             for (int y = 0; y < rows; y++) {
-                Tile.ZoneType zone = Tile.ZoneType.CONVEYOR; // Трава вокруг (floor_grass)
+                Tile.ZoneType zone = Tile.ZoneType.CONVEYOR; 
 
                 if (x >= 1 && x <= 4 && y >= 11 && y <= 14) {
-                    zone = Tile.ZoneType.MINE;       // Раздел шахты (floor_mine)
+                    zone = Tile.ZoneType.MINE;       
                 } else if (x >= 1 && x <= 4 && y >= 1 && y <= 4) {
-                    zone = Tile.ZoneType.SELL;       // Зона продажи
+                    zone = Tile.ZoneType.SELL;       
                 } else if (x >= 6 && x <= 17 && y >= 2 && y <= 11) {
-                    zone = Tile.ZoneType.PRODUCTION; // Бетонная площадка (floor_factory)
+                    zone = Tile.ZoneType.PRODUCTION; 
                 }
 
                 tiles[x][y] = new Tile(x, y, zone);
