@@ -68,7 +68,7 @@ public class GameScreen implements Screen {
     }
 
     private BitmapFont createCyrillicFont() {
-        // ЖЕЛЕЗОБЕТОННЫЙ СПОСОБ: берём шрифт прямо из системной папки Windows
+        
         FileHandle fontFile = Gdx.files.absolute("C:/Windows/Fonts/arial.ttf");
 
         if (!fontFile.exists()) {
@@ -81,7 +81,7 @@ public class GameScreen implements Screen {
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(fontFile);
         FreeTypeFontParameter parameter = new FreeTypeFontParameter();
         parameter.size = 20;
-        // Подключаем кириллицу
+        
         parameter.characters = FreeTypeFontGenerator.DEFAULT_CHARS + "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюяІіЇїЄєҐґ";
 
         BitmapFont cyrillicFont = generator.generateFont(parameter);
@@ -264,7 +264,7 @@ public class GameScreen implements Screen {
                 Texture floorToDraw;
                 switch (tile.getZoneType()) {
                     case MINE:
-                        // Раздел шахты (floor_mine.png, а если файла ещё нет — затемнённая порода)
+                        
                         if (mineTex != null) {
                             floorToDraw = mineTex;
                             batch.setColor(Color.WHITE);
@@ -274,17 +274,17 @@ public class GameScreen implements Screen {
                         }
                         break;
                     case PRODUCTION:
-                        // Выделенная красным зона цеха в бетоне (floor_factory.png)
+                        
                         floorToDraw = factoryTex;
                         batch.setColor(Color.WHITE);
                         break;
                     case SELL:
-                        // Зона продажи на траве с ярким зелёным оттенком
+                        
                         floorToDraw = grassTex;
                         batch.setColor(0.55f, 1.0f, 0.60f, 1f);
                         break;
                     default:
-                        // Всё остальное вокруг — в траве (floor_grass.png)
+                        
                         floorToDraw = grassTex;
                         batch.setColor(Color.WHITE);
                         break;
@@ -297,7 +297,7 @@ public class GameScreen implements Screen {
         }
         batch.setColor(Color.WHITE);
 
-        // Залежи железной руды в шахте
+        
         Texture oreTex = textures.get(ResourceType.IRON_ORE.getTexturePath());
         if (oreTex != null) {
             for (int x = 1; x <= 4; x++) {
@@ -373,14 +373,14 @@ public class GameScreen implements Screen {
 
     private void drawPlayerSprite() {
         Player p = world.getPlayer();
-        String spriteName = "miner_up.png"; // По умолчанию стоит лицом к нам
+        String spriteName = "miner_up.png"; 
 
         switch (p.getFacingDirection()) {
             case UP:
-                spriteName = "miner_down.png"; // Идём вверх (от камеры) -> видим спину и рюкзак
+                spriteName = "miner_down.png"; 
                 break;
             case DOWN:
-                spriteName = "miner_up.png";   // Идём вниз (на камеру) -> видим лицо
+                spriteName = "miner_up.png";  
                 break;
             case LEFT:
                 spriteName = "miner_left.png";
@@ -401,7 +401,7 @@ public class GameScreen implements Screen {
     private void drawOverlaysAndPanelShapes() {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 
-        // Верхняя полоса над картой (1024..1080)
+       
         shapeRenderer.setColor(0.08f, 0.09f, 0.12f, 1f);
         shapeRenderer.rect(0, MAP_PIXEL_H, MAP_PIXEL_W, SCREEN_H - MAP_PIXEL_H);
 
@@ -429,7 +429,7 @@ public class GameScreen implements Screen {
             }
         }
 
-        // Подсветка клетки под курсором мыши
+      
         if (hoverGx >= 0 && hoverGy >= 0 && world.getMap().canBuildAt(hoverGx, hoverGy)) {
             float gx = hoverGx * Map.TILE_SIZE;
             float gy = hoverGy * Map.TILE_SIZE;
@@ -448,7 +448,7 @@ public class GameScreen implements Screen {
             shapeRenderer.rect(p.getX() - 22, p.getY() + 32, 44 * Math.min(1f, ratio), 4);
         }
 
-        // Правая панель управления (от x = 1344 до 1920)
+        
         shapeRenderer.setColor(0.08f, 0.09f, 0.12f, 1f);
         shapeRenderer.rect(MAP_PIXEL_W, 0, SCREEN_W - MAP_PIXEL_W, SCREEN_H);
 
@@ -527,7 +527,7 @@ public class GameScreen implements Screen {
 
         MachineShop.CatalogItem[] items = MachineShop.CatalogItem.values();
         float btnTop = 835f;
-        MachineShop.CatalogItem hoveredShopItem = null; // Для відстеження підказки
+        MachineShop.CatalogItem hoveredShopItem = null; 
 
         Vector3 mouse = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
         camera.unproject(mouse);
@@ -594,18 +594,18 @@ public class GameScreen implements Screen {
         }
         font.setColor(Color.WHITE);
 
-        // Відмальовка спливаючої підказки (Tooltip)
+        
         if (hoveredShopItem != null) {
-            batch.end(); // Призупиняємо малювання тексту, щоб намалювати фон підказки
+            batch.end(); 
 
             Gdx.gl.glEnable(GL20.GL_BLEND);
             shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-            shapeRenderer.setColor(0.1f, 0.1f, 0.15f, 0.9f); // Темно-синій напівпрозорий фон
+            shapeRenderer.setColor(0.1f, 0.1f, 0.15f, 0.9f); 
             shapeRenderer.rect(mouse.x - 220, mouse.y - 70, 210, 60);
             shapeRenderer.end();
             Gdx.gl.glDisable(GL20.GL_BLEND);
 
-            batch.begin(); // Продовжуємо малювати текст
+            batch.begin(); 
             font.setColor(Color.YELLOW);
             font.draw(batch, hoveredShopItem.getDescription(), mouse.x - 210, mouse.y - 20);
         }
