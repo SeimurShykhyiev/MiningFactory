@@ -9,7 +9,7 @@ import com.miningfactory.world.Map;
 
 public class HUD {
     public void render(SpriteBatch batch, BitmapFont font, GameWorld world, Building hoveredBuilding) {
-        // Подписи 5 функциональных зон на карте
+        
         font.setColor(Color.ORANGE);
         font.draw(batch, "1. MINE ZONE (Hold SPACE/E)", 1 * Map.TILE_SIZE + 6, 15 * Map.TILE_SIZE - 6);
         font.draw(batch, "Auto-Out ->", 3 * Map.TILE_SIZE + 8, 13 * Map.TILE_SIZE + 26);
@@ -24,7 +24,7 @@ public class HUD {
         font.draw(batch, "2 & 3. PRODUCTION & CONVEYORS (LMB: Build/Rotate | RMB: Remove | R: Dir | F: Load/Take)",
                 5 * Map.TILE_SIZE + 8, 16 * Map.TILE_SIZE - 10);
 
-        // Верхний блок показателей на боковой панели
+        
         float x = 940;
         float y = 702;
 
@@ -44,7 +44,7 @@ public class HUD {
         y -= 20;
         font.draw(batch, "Build Dir (R): " + world.getBuildDirection().getLabel(), x, y);
 
-        // Строка инспектора и статуса внизу экрана
+        
         if (hoveredBuilding != null) {
             font.setColor(Color.YELLOW);
             String resName = hoveredBuilding.getDisplayedResource() != null
