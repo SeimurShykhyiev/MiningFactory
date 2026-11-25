@@ -1,0 +1,33 @@
+miner.png
+size: 768,768
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+miner_up
+  rotate: false
+  xy: 0,0
+  size: 384,384
+  orig: 384,384
+  offset: 0,0
+  index: -1
+miner_right
+  rotate: false
+  xy: 384,0
+  size: 384,384
+  orig: 384,384
+  offset: 0,0
+  index: -1
+miner_down
+  rotate: false
+  xy: 0,384
+  size: 384,384
+  orig: 384,384
+  offset: 0,0
+  index: -1
+miner_left
+  rotate: false
+  xy: 384,384
+  size: 384,384
+  orig: 384,384
+  offset: 0,0
+  index: -1
