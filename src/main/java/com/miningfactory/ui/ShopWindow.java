@@ -11,7 +11,7 @@ public class ShopWindow {
     public float render(SpriteBatch batch, BitmapFont font, GameWorld world, float startX, float startY) {
         float y = startY;
         font.setColor(Color.CYAN);
-        font.draw(batch, "--- EQUIPMENT SHOP (Keys 1-9) ---", startX, y);
+        font.draw(batch, "EQUIPMENT SHOP (Keys 1-9)", startX, y);
         y -= 20;
 
         MachineShop.CatalogItem[] items = MachineShop.CatalogItem.values();
@@ -28,7 +28,7 @@ public class ShopWindow {
 
         y -= 8;
         font.setColor(Color.CYAN);
-        font.draw(batch, "--- PLAYER UPGRADES ---", startX, y);
+        font.draw(batch, "PLAYER UPGRADES", startX, y);
         y -= 20;
 
         Player p = world.getPlayer();
