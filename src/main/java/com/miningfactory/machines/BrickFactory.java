@@ -13,7 +13,7 @@ public class BrickFactory extends ProcessingMachine {
 
     @Override
     public boolean canAccept(ResourceType type) {
-        // Принимает каменную пыль для кирпича, а также пропускает транзитом алмаз/изумруд после сита
+        
         return inputSlot == null && (type == ResourceType.STONE_DUST
                 || type == ResourceType.DIAMOND
                 || type == ResourceType.EMERALD);
@@ -29,7 +29,7 @@ public class BrickFactory extends ProcessingMachine {
         if (inputSlot == ResourceType.STONE_DUST) {
             outputBuffer = ResourceType.BRICK;
         } else {
-            outputBuffer = inputSlot; // Драгоценный камень проходит дальше на продажу без потерь
+            outputBuffer = inputSlot; 
         }
         inputSlot = null;
     }
