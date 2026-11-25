@@ -22,7 +22,7 @@ public abstract class ProcessingMachine extends Machine {
 
     @Override
     public void update(float dt, Map map, MoneyManager moneyManager) {
-        // 1. Пытаемся вытолкнуть готовый продукт на соседний тайл по направлению выхода
+        
         if (outputBuffer != null) {
             int targetX = gridX + direction.getDx();
             int targetY = gridY + direction.getDy();
@@ -31,7 +31,7 @@ public abstract class ProcessingMachine extends Machine {
             }
         }
 
-        // 2. Если выход свободен и есть сырье на входе — перерабатываем
+       
         if (outputBuffer == null && hasRequiredInputs()) {
             processing = true;
             timer += dt;
